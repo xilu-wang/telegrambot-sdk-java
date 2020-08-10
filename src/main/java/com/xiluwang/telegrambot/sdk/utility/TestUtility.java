@@ -1,10 +1,10 @@
-package com.xiluwang.telegrambot.sdk;
+package com.xiluwang.telegrambot.sdk.utility;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-public class Utility {
+public class TestUtility {
 
     private final static ObjectMapper PRETTY_MAPPER = new ObjectMapper()
             .enable(SerializationFeature.INDENT_OUTPUT);

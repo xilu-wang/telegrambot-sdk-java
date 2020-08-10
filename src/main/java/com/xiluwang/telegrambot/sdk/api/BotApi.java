@@ -1,6 +1,9 @@
 package com.xiluwang.telegrambot.sdk.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.xiluwang.telegrambot.sdk.utility.TestUtility;
+import com.xiluwang.telegrambot.sdk.model.types.User;
+import com.xiluwang.telegrambot.sdk.utility.TokenLoader;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -45,6 +48,19 @@ public class BotApi {
         } else {
             throw new RuntimeException("Invalid response from API call.");
         }
+    }
+
+
+    public static void main(String[] args) throws IOException {
+        String token = TokenLoader.getToken();
+        String url = "https://api.telegram.org/bot" + token + "/getMe";
+        User user = (User) BotApi.call(
+                url,
+                false,
+                "application/json",
+                null,
+                User.class);
+        TestUtility.prettyPrintObject(user);
     }
 
 }
