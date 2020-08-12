@@ -20,4 +20,5 @@ public class Chat {
     private Integer slow_mode_delay;
     private String sticker_set_name;
     private Boolean can_set_sticker_set;
+    private Boolean all_members_are_administrators;
 }
