@@ -8,7 +8,6 @@ import com.xiluwang.telegrambot.sdk.utility.ResourceLoader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import static com.xiluwang.telegrambot.sdk.utility.TestUtility.objectToJsonString;
 
@@ -77,7 +76,36 @@ public class MessageUtil {
         String url = HOST_URL + Endpoint.SEND_PHOTO.getValue();
         Map<String, String> params = new HashMap<>();
         params.put("chat_id", chatId);
-       return (Message) BotApi.postFile(url, params, "photo", localFilePath, Message.class);
+        return (Message) BotApi.postFile(url, params, "photo", localFilePath, Message.class);
     }
 
+    /**
+     * This method will send a photo by the photo url.
+     * @param chatId the id of the target chat
+     * @param videoUrl the video url
+     * @return Message object
+     * @throws IOException when API response cannot parse to Message
+     */
+    public static Message sendVideoByUrl(String chatId, String videoUrl) throws IOException {
+        String url = HOST_URL + Endpoint.SEND_VIDEO.getValue();
+        VideoMessageRequest request = VideoMessageRequest.builder()
+                .chatId(chatId)
+                .video(videoUrl)
+                .build();
+        return (Message) BotApi.post(url, objectToJsonString(request), Message.class);
+    }
+
+    /**
+     * This method will send a file by uploading from the local file system.
+     * @param chatId the id of the target chat
+     * @param videoLocation the absolute path of the video
+     * @return Message object
+     * @throws IOException when API response cannot parse to Message
+     */
+    public static Message sendVideoByFile(String chatId, String videoLocation) throws IOException {
+        String url = HOST_URL + Endpoint.SEND_VIDEO.getValue();
+        Map<String, String> params = new HashMap<>();
+        params.put("chat_id", chatId);
+        return (Message) BotApi.postFile(url, params, "video", videoLocation, Message.class);
+    }
 }
