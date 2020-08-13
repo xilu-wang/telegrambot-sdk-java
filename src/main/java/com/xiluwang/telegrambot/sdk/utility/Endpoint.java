@@ -2,7 +2,7 @@ package com.xiluwang.telegrambot.sdk.utility;
 
 // TODO add more endpoint
 public enum Endpoint {
-    GET_UPDATE("/getUpdate"),
+    GET_UPDATE("/getUpdates"),
     GET_ME("/getMe"),
     SEND_MESSAGE("/sendMessage"),
     FORWARD_MESSAGE("/forwardMessage"),
