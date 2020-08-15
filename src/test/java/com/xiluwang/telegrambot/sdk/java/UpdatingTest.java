@@ -4,12 +4,14 @@ import com.xiluwang.telegrambot.sdk.model.updates.Update;
 import com.xiluwang.telegrambot.sdk.updating.UpdateUtil;
 import com.xiluwang.telegrambot.sdk.utility.TestUtility;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.time.Instant;
 
 @Slf4j
+@Ignore
 public class UpdatingTest {
 
     @Test
