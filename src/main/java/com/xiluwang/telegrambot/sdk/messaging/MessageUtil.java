@@ -50,6 +50,20 @@ public class MessageUtil {
     }
 
     /**
+     * This method will delete the message by chat id and message id.
+     * @param chatId the id of the target chat
+     * @param messageId the message you are deleting
+     * @throws IOException when API response is not right
+     */
+    public static Boolean deleteMessage(String chatId, Integer messageId) throws IOException {
+        String url = HOST_URL + Endpoint.DELETE_MESSAGE.getValue();
+        Map<String, Object> params = new HashMap<>();
+        params.put("chat_id", chatId);
+        params.put("message_id", messageId);
+        return (Boolean) BotApi.post(url, objectToJsonString(params), Boolean.class);
+    }
+
+    /**
      * This method will send a photo by the photo url.
      * @param chatId the id of the target chat
      * @param photoUrl the photo url

@@ -21,6 +21,7 @@
         <httpclient.version>4.5.12</httpclient.version>
         <slf4j.version>1.7.30</slf4j.version>
         <junit5.version>5.4.2</junit5.version>
+        <junit4.version>4.12</junit4.version>
     </properties>
 
     <dependencies>
@@ -50,9 +51,10 @@
             <version>${slf4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit5.version}</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit4.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

@@ -1,12 +1,8 @@
 package com.xiluwang.telegrambot.sdk.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.xiluwang.telegrambot.sdk.model.types.User;
 import com.xiluwang.telegrambot.sdk.utility.RequestContentType;
-import com.xiluwang.telegrambot.sdk.utility.ResourceLoader;
-import com.xiluwang.telegrambot.sdk.utility.TestUtility;
 import org.apache.http.HttpEntity;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
@@ -37,6 +33,17 @@ public class BotApi {
         HttpUriRequest request;
         request = RequestBuilder.get()
                 .setUri(url)
+                .build();
+        return call(request, responseClass);
+    }
+
+    public static Object getWithBody(String url, String body, Class responseClass) throws IOException {
+        HttpUriRequest request;
+        StringEntity entity = new StringEntity(body, StandardCharsets.UTF_8);
+        entity.setContentType(RequestContentType.JSON.getValue());
+        request = RequestBuilder.get()
+                .setUri(url)
+                .setEntity(entity)
                 .build();
         return call(request, responseClass);
     }
@@ -78,15 +85,6 @@ public class BotApi {
         } else {
             throw new RuntimeException("Invalid response from API call.");
         }
-    }
-
-
-    public static void main(String[] args) throws IOException {
-        String token = ResourceLoader.getToken();
-        String baseUrl = ResourceLoader.getBaseUrl();
-        String url = baseUrl + token + "/getMe";
-        User user = (User) BotApi.get(url, User.class);
-        TestUtility.prettyPrintObject(user);
     }
 
 }
