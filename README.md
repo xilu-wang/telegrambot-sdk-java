@@ -21,14 +21,16 @@ mvn clean install
 ```
 
 ### Usage
-1. Add your telegram bot token in application.properties under resources folder
+##### Step 1. 
+Add your telegram bot token in application.properties under `resources` folder: 
 ```properties
 # example
 token=1391770037:BBED1wvRkPVWCvxmczThmXYyUT4VXmCh-B4
 ```
 
-2. Do a quick test to see if it works
-Run com.xiluwang.telegrambot.sdk.api.BotApi.main(), and you should get your bot info such as follows:
+##### Step 2. 
+
+- Run [ApiTest](src/test/java/com/xiluwang/telegrambot/sdk/java/ApiTest.java), and you should get your bot info such as follows:
 ```json
 {
   "id" : 100000000,
@@ -40,5 +42,7 @@ Run com.xiluwang.telegrambot.sdk.api.BotApi.main(), and you should get your bot 
   "supports_inline_queries" : false
 }
 ```
+- Run [MessagingTest](src/test/java/com/xiluwang/telegrambot/sdk/java/MessagingTest.java)
+- Run [UpdatingTest](src/test/java/com/xiluwang/telegrambot/sdk/java/UpdatingTest.java)
 
 ### Interfaces
