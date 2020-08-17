@@ -68,6 +68,7 @@ public class BotApi {
         return call(request, responseClass);
     }
 
+    // TODO Add return type and customized RuntimeException for failed response
     private static Object call(HttpUriRequest request, Class clazz) throws IOException {
         Map<String, Object> resultMap = null;
         ObjectMapper mapper = new ObjectMapper();
